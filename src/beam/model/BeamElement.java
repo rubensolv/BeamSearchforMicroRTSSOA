@@ -66,4 +66,17 @@ public class BeamElement {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		String ret = "";
+		ret += "Beam Element ";
+		for (Integer e : elements) {
+			ret+=e+" ";
+		}
+		
+		return ret;
+	}
+	
+	
 }

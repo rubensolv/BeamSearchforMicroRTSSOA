@@ -23,6 +23,8 @@ public class RunBeam {
 	private Beam beam;
 	private int deep;
 	private Set<BeamElement> initialElements;
+	private boolean continueEval;
+	private ArrayList<BeamElement> fathers;
 	
 	public Beam run(RatePopulation evalFunction){
 		// gerar o feixe com os scripts individuais
@@ -66,6 +68,9 @@ public class RunBeam {
 		//capturo os melhores 
 		HashMap<BeamElement, BigDecimal> newBeam = (HashMap<BeamElement, BigDecimal>)sortByValue(bTemp.getBeam());
 		
+		//valido se algum pai foi eleito como melhor beam
+		validateFatherIncrease(newBeam);
+		
 		//log
 		System.out.println("Melhores" + ConfigBeam.QTD_K +"elementos");
 		System.out.println(newBeam);
@@ -73,10 +78,43 @@ public class RunBeam {
 		//crio todos os filhos baseados no número K de pais
 		HashMap<BeamElement, BigDecimal> fullBeam = buildFullBeam(newBeam.keySet());
 		
+		//incluo os pais no proximo nível 
+		for(BeamElement bFather : newBeam.keySet()){
+			fullBeam.put(bFather, BigDecimal.ZERO);
+		}
+		
 		Beam bRet = new Beam(fullBeam);
 		return bRet;
 	}
 	
+	/**
+	 * Recebe os melhores elementos do feixe e verifica se, dentre eles, existe algum dos pais. 
+	 * Caso exista, o processo deve ser parado. Caso contrário segue normal.
+	 * Se a  variavel fathers estiver vazia, é a primeira iteração e não deve ser avaliado.
+	 * @param newBeam
+	 */
+	private void validateFatherIncrease(HashMap<BeamElement, BigDecimal> newBeam) {
+		if(fathers.size() == 0){
+			fathers.addAll(newBeam.keySet());
+		}else{
+			//realizo a avaliação
+			for(BeamElement f : fathers){
+				if(newBeam.containsKey(f)){
+					System.out.println("Pai e um dos melhores. Parar processo!");
+					this.continueEval = false;
+				}
+			}
+		}
+		//se nenhum dos novos filhos contiver um dos pais o processo irá continuar
+		//atualizo a listagem de pais
+		if(this.continueEval == true){
+			fathers.clear();
+			fathers.addAll(newBeam.keySet());
+		}
+		
+	}
+
+
 	/**
 	 * Função que cria um novo feixe baseado nos elementos passados como parametro
 	 * @param newBeam k melhores elementos do feixe
@@ -169,6 +207,9 @@ public class RunBeam {
 	
 	
 	private boolean continueProcess() {
+		if(continueEval == false){
+			return false;
+		}
 		if(deep <= ConfigBeam.MAX_DEEP ){
 			return true;
 		}
@@ -177,6 +218,8 @@ public class RunBeam {
 	
 	protected void resetControls(){
 		this.deep = 0;
+		this.continueEval = true;
+		this.fathers = new ArrayList<>();
 	}
 
 }

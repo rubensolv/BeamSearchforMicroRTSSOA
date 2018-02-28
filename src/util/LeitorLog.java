@@ -12,8 +12,8 @@ public class LeitorLog {
 	private String pathStruture;
 	
 	public LeitorLog(){
-		//pathStruture = System.getProperty("user.dir").concat("/logs");
-		pathStruture = "/home/rubens/cluster/ExecAIBeamSearch/logs";
+		pathStruture = System.getProperty("user.dir").concat("/logs");
+		//pathStruture = "/home/rubens/cluster/ExecAIBeamSearch_TO_UFV/logs";
 	}
 	
 

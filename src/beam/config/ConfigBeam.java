@@ -6,5 +6,5 @@ public final class ConfigBeam {
 	//total de elementos selecionados por iteração. Ou seja, os K elementos pais.
 	public final static int QTD_K = 2;
 	//profundidade de exploracao que será utilizada
-	public final static int MAX_DEEP = 3;
+	public final static int MAX_DEEP = 4;
 }
