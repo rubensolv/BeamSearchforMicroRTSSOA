@@ -14,9 +14,9 @@ import util.LeitorLog;
 
 public class RoundRobinEval implements RatePopulation{
 	//CONSTANTES
-	private static final int TOTAL_PARTIDAS_ROUND = 4;
-	private static final int TOTAL_SOA_CLIENTES   = 1;
-	//private static final String pathSOA = "/home/rubens/cluster/ExecAIBeamSearch_TO_UFV/configSOA/SOA";
+	private static final int TOTAL_PARTIDAS_ROUND = 2;
+	private static final int TOTAL_SOA_CLIENTES   = 39;
+	//private static final String pathSOA = "/home/rubens/cluster/ExecAI_HILL_TO_USP_map24/configSOA/SOA";
 	private static final String pathSOA = System.getProperty("user.dir").concat("/configSOA/SOA");
 	
 	//Classes de informação	

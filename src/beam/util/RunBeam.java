@@ -207,9 +207,9 @@ public class RunBeam {
 	
 	
 	private boolean continueProcess() {
-		if(continueEval == false){
+		/*if(continueEval == false){
 			return false;
-		}
+		}*/
 		if(deep <= ConfigBeam.MAX_DEEP ){
 			return true;
 		}

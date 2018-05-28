@@ -21,7 +21,7 @@ public class RunTestes {
 		System.out.println("Final Evaluation");
 		bFinal.printWithValue();
 		
-		//fEval.finishProcess();
+		fEval.finishProcess();
 		System.out.println("Tempo Fim "+Instant.now());
 	}
 
