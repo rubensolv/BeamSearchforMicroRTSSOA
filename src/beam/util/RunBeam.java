@@ -25,6 +25,7 @@ public class RunBeam {
 	private Set<BeamElement> initialElements;
 	private boolean continueEval;
 	private ArrayList<BeamElement> fathers;
+	private ArrayList<BeamElement> finalFathers = new ArrayList<>();
 	
 	public Beam run(RatePopulation evalFunction){
 		// gerar o feixe com os scripts individuais
@@ -74,6 +75,8 @@ public class RunBeam {
 		//log
 		System.out.println("Melhores" + ConfigBeam.QTD_K +"elementos");
 		System.out.println(newBeam);
+		//keep the best father
+		finalFathers.addAll(newBeam.keySet());
 		
 		//crio todos os filhos baseados no número K de pais
 		HashMap<BeamElement, BigDecimal> fullBeam = buildFullBeam(newBeam.keySet());
@@ -81,6 +84,12 @@ public class RunBeam {
 		//incluo os pais no proximo nível 
 		for(BeamElement bFather : newBeam.keySet()){
 			fullBeam.put(bFather, BigDecimal.ZERO);
+		}
+		//insiro todos os pais se for o ultimo nível
+		if(ConfigBeam.MAX_DEEP == this.deep){
+			for(BeamElement bFather : finalFathers){
+				fullBeam.put(bFather, BigDecimal.ZERO);
+			}
 		}
 		
 		Beam bRet = new Beam(fullBeam);
@@ -101,7 +110,7 @@ public class RunBeam {
 			for(BeamElement f : fathers){
 				if(newBeam.containsKey(f)){
 					System.out.println("Pai e um dos melhores. Parar processo!");
-					this.continueEval = false;
+					//this.continueEval = false;
 				}
 			}
 		}

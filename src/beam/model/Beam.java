@@ -75,7 +75,7 @@ public class Beam {
 			
 			tBeam.put(bEl, BigDecimal.ZERO);
 		}*/
-		//0, 189, 188, 26, 151, 290, 232, 201, 64, 172, 203, 164
+		//0, 189, 290, 188, 232, 151, 26, 202, 172, 64, 180, 265, 1, 225, 101, 116
 		BeamElement bEl;
 		bEl = new BeamElement();
 		bEl.addElement(0);
@@ -84,34 +84,46 @@ public class Beam {
 		bEl.addElement(189);
 		tBeam.put(bEl, BigDecimal.ZERO);
 		bEl = new BeamElement();
-		bEl.addElement(188);
-		tBeam.put(bEl, BigDecimal.ZERO);
-		bEl = new BeamElement();
-		bEl.addElement(26);
-		tBeam.put(bEl, BigDecimal.ZERO);
-		bEl = new BeamElement();
-		bEl.addElement(151);
-		tBeam.put(bEl, BigDecimal.ZERO);
-		bEl = new BeamElement();
 		bEl.addElement(290);
+		tBeam.put(bEl, BigDecimal.ZERO);
+		bEl = new BeamElement();
+		bEl.addElement(188);
 		tBeam.put(bEl, BigDecimal.ZERO);
 		bEl = new BeamElement();
 		bEl.addElement(232);
 		tBeam.put(bEl, BigDecimal.ZERO);
 		bEl = new BeamElement();
-		bEl.addElement(201);
+		bEl.addElement(151);
 		tBeam.put(bEl, BigDecimal.ZERO);
 		bEl = new BeamElement();
-		bEl.addElement(64);
+		bEl.addElement(26);
+		tBeam.put(bEl, BigDecimal.ZERO);
+		bEl = new BeamElement();
+		bEl.addElement(202);
 		tBeam.put(bEl, BigDecimal.ZERO);
 		bEl = new BeamElement();
 		bEl.addElement(172);
 		tBeam.put(bEl, BigDecimal.ZERO);
 		bEl = new BeamElement();
-		bEl.addElement(203);
+		bEl.addElement(64);
 		tBeam.put(bEl, BigDecimal.ZERO);
 		bEl = new BeamElement();
-		bEl.addElement(164);
+		bEl.addElement(180);
+		tBeam.put(bEl, BigDecimal.ZERO);
+		bEl = new BeamElement();
+		bEl.addElement(265);
+		tBeam.put(bEl, BigDecimal.ZERO);
+		bEl = new BeamElement();
+		bEl.addElement(1);
+		tBeam.put(bEl, BigDecimal.ZERO);
+		bEl = new BeamElement();
+		bEl.addElement(225);
+		tBeam.put(bEl, BigDecimal.ZERO);
+		bEl = new BeamElement();
+		bEl.addElement(101);
+		tBeam.put(bEl, BigDecimal.ZERO);
+		bEl = new BeamElement();
+		bEl.addElement(116);
 		tBeam.put(bEl, BigDecimal.ZERO);
 		
 		Beam b = new Beam(tBeam);
